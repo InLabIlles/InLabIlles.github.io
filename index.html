@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+    }
+
+    .video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      width: 100px;
+      height: 100px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .play-button:before {
+      content: "";
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      border-left: 30px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="video-container">
+    <video  id="myVideo" class="video" autoplay onloadstart="this.volume=0.5"></video>
+    <div class="play-button"></div>
+  </div>
+
+  <script>
+
+    var videos = ["video1.mp4", "video2.mp4"];
+    var videoIndex = 0;
+    var videoElement = document.getElementById("myVideo");
+    var playButton = document.querySelector(".play-button");
+
+    function playNextVideo() {
+      videoElement.src = videos[videoIndex];
+      videoElement.play();
+      videoIndex = (videoIndex + 1) % videos.length;
+    }
+
+    videoElement.addEventListener("ended", playNextVideo);
+    videoElement.addEventListener("play", function() {
+      videoElement.volume = 1;
+    });
+
+    playButton.addEventListener("click", function() {
+      if (videoElement.paused) {
+        videoElement.play();
+        playButton.style.display = "none";
+      } else {
+        videoElement.pause();
+        playButton.style.display = "block";
+      }
+    });
+
+    playNextVideo();
+  </script>
+</body>
+</html>
