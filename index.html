@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  var pi = π;
+  
   <style>
     body {
       margin: 0;
@@ -68,7 +68,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: -1;
-      animation: beamAnimation pis linear infinite;
+      animation: beamAnimation 3s linear infinite;
     }
 
     @keyframes beamAnimation {
@@ -122,6 +122,7 @@
   </div>
 
   <script>
+    var pi = π;
     var videos = ["video1.mp4", "video2.mp4"];
     var videoIndex = 0;
     var videoElement = document.getElementById("myVideo");
