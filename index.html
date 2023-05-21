@@ -47,17 +47,49 @@
       display: inline-block;
       width: 0;
       height: 0;
-      border-top: 40px solid transparent;
-      border-bottom: 40px solid transparent;
-      border-left: 90px solid #000;
+      border-top: 50px solid transparent;
+      border-bottom: 50px solid transparent;
+      border-left: 91px solid #000;
       margin-left: 1em;
+    }
+
+    .play-button-text {
+      color: #fff;
+      font-size: 48px;
+      font-weight: bold;
+    }
+
+    .text-above {
+      position: absolute;
+      top: calc(32% - 100px);
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 48px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .text-below {
+      position: absolute;
+      top: calc(64% + 100px);
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 48px;
+      font-weight: bold;
+      color: #fff;
     }
   </style>
 </head>
 <body>
   <div class="video-container">
+    
+    <span class="text-above">IN</span>
+
     <video  id="myVideo" class="video" autoplay onloadstart="this.volume=0.5"></video>
+
     <div class="play-button"></div>
+    
+    <span class="text-below">LAB</span>
   </div>
 
   <script>
