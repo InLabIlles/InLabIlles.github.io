@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+    }
+
+    .video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div class="video-container">
+    <video id="myVideo" class="video"></video>
+  </div>
+
+  <script>
+    var videos = ["video1.mp4", "video2.mp4", "video3.mp4"];
+    var videoIndex = 0;
+    var videoElement = document.getElementById("myVideo");
+
+    function playNextVideo() {
+      videoElement.src = videos[videoIndex];
+      videoElement.play();
+      videoIndex = (videoIndex + 1) % videos.length;
+    }
+
+    videoElement.addEventListener("ended", playNextVideo);
+
+    playNextVideo();
+  </script>
+</body>
+</html>
