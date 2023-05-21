@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
   <style>
     body {
       margin: 0;
@@ -42,7 +41,7 @@
       align-items: center;
       cursor: pointer;
       overflow: hidden;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.5);
     }
 
     .play-button:before {
@@ -118,11 +117,10 @@
     <!--<span class="text-above">IN</span>-->
     <video id="myVideo" class="video" autoplay onloadstart="this.volume=0.5"></video>
     <div class="play-button"></div>
-    <!--<span class="text-below">LAB</span> -->
+    <!--<span class="text-below">LAB</span>-->
   </div>
 
   <script>
-    var pi = π;
     var videos = ["video1.mp4", "video2.mp4"];
     var videoIndex = 0;
     var videoElement = document.getElementById("myVideo");
@@ -130,22 +128,20 @@
 
     function playNextVideo() {
       videoElement.src = videos[videoIndex];
-      videoElement.play();
       videoIndex = (videoIndex + 1) % videos.length;
     }
 
     videoElement.addEventListener("ended", playNextVideo);
     videoElement.addEventListener("play", function() {
       videoElement.volume = 1;
+      playButton.style.display = "none";
     });
 
     playButton.addEventListener("click", function() {
       if (videoElement.paused) {
         videoElement.play();
-        playButton.style.display = "none";
       } else {
         videoElement.pause();
-        playButton.style.display = "block";
       }
     });
 
